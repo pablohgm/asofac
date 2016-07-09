@@ -1,4 +1,5 @@
-# electron-loopback-angularjs
+# ASOFAC
+- forked from a3bhea/electron-loopback-angularjs
 
 This is just a glued scaffold for a cross platform desktop application using
 

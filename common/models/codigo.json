@@ -1,10 +1,17 @@
 {
-  "name": "Todo",
+  "name": "codigo",
   "base": "PersistedModel",
   "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
   "properties": {
-    "content": {
+    "informacion": {
       "type": "string",
+      "required": true
+    },
+    "id": {
+      "type": "number",
       "required": true
     }
   },

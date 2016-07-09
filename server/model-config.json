@@ -29,5 +29,21 @@
   "Todo": {
     "dataSource": "db",
     "public": true
+  },
+  "codigo": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "tipo": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "sector": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "contribuyente": {
+    "dataSource": "mysql",
+    "public": true
   }
 }
