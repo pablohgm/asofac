@@ -1562,6 +1562,15 @@ module.factory(
                         url: urlBase + "/Todos/:id",
                         method: "PUT"
                     },
+
+                    "createReport": {
+                        url: "/api/contribuyentes/report",
+                        method: "POST",
+                        responseType:'arraybuffer',
+                        headers: {
+                            'Content-type': 'application/json'
+                        }
+                    },
                 }
             );
 

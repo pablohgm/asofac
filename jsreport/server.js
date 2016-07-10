@@ -1,0 +1,1 @@
+var jsreport = require('jsreport-core')();

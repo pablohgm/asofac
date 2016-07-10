@@ -28,6 +28,7 @@
     "electron-app"
   ],
   "dependencies": {
+    "angular-ui-grid": "^3.2.5",
     "body-parser": "^1.14.1",
     "compression": "^1.0.3",
     "cors": "^2.5.2",
@@ -35,6 +36,9 @@
     "electron-debug": "^1.0.1",
     "express": "^4.13.3",
     "express-ejs-layouts": "^2.1.0",
+    "jsreport-core": "^1.0.5",
+    "jsreport-jsrender": "^1.0.1",
+    "jsreport-phantom-pdf": "^1.0.1",
     "loopback": "^2.29.0",
     "loopback-boot": "^2.6.5",
     "loopback-component-explorer": "^2.4.0",
