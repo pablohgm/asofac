@@ -1,0 +1,55 @@
+{
+  "name": "contribuyente",
+  "plural": "contribuyentes",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "nombre": {
+      "type": "string",
+      "required": true
+    },
+    "Apellido1": {
+      "type": "string",
+      "required": true
+    },
+    "Apellido2": {
+      "type": "string",
+      "required": true
+    },
+    "direccion": {
+      "type": "string",
+      "required": true
+    },
+    "monto": {
+      "type": "number",
+      "required": true
+    },
+    "tipoContribucion": {
+      "type": "number",
+      "required": true
+    },
+    "telefono": {
+      "type": "string",
+      "required": true
+    },
+    "sector": {
+      "type": "number",
+      "required": true
+    },
+    "activo": {
+      "type": "number",
+      "required": true
+    },
+    "id": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

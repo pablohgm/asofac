@@ -4,3 +4,8 @@ body {
 .glyphicon-remove:hover {
   cursor:pointer
 }
+
+.grid {
+  width: 500px;
+  height: 400px;
+}

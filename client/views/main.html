@@ -1,0 +1,11 @@
+<h1>Contribuyentes</h1>
+<hr>
+<button class="btn btn-default" ng-click="report()">Print {{gridOptions.data.length}}</button>
+<button class="btn btn-default" ng-click="toViewPdf()">Go</button>
+
+<hr>
+<div class="list-group">
+    <a class="list-group-item" ng-repeat="item in contribuyentes">{{item.nombre}}&nbsp;
+        <i class="glyphicon glyphicon-remove pull-right"></i></a>
+</div>
+
