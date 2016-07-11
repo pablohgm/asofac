@@ -1,8 +1,7 @@
 angular
   .module('app', [
     'lbServices',
-    'ui.router',
-    'ngAnimate', 'ngTouch', 'ui.grid', 'ui.grid.selection', 'ui.grid.exporter'
+    'ui.router'
   ])
 
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
@@ -10,9 +9,15 @@ angular
     $stateProvider
       .state('todo', {
         url: '',
-        templateUrl: 'views/main.html',
+        templateUrl: '../views/main.html',
         controller: 'AppController'
-      });
+      })
+    .state('viewPdf', {
+        url: '/viewPdf',
+        templateUrl: '../views/viewPdf.html',
+        controller: 'ViewPdfController'
+    })
+    ;
 
     $urlRouterProvider.otherwise('todo');
   }]);

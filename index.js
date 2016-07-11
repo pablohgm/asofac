@@ -10,6 +10,9 @@ const BrowserWindow = electron.BrowserWindow
 // Initiate backend `LoopBack`
 require(__dirname+'/server/server.js');
 
+// Initiate backend `LoopBack`
+require(__dirname+'/pdf.js/gulpfile.js');
+
 //toFIX
 // report crashes to the Electron project
 //require('crash-reporter').start();
