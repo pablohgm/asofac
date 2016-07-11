@@ -1,3 +1,8 @@
+// Copyright IBM Corp. 2015. All Rights Reserved.
+// Node module: loopback-example-angular
+// This file is licensed under the MIT License.
+// License text available at https://opensource.org/licenses/MIT
+
 (function(window, angular, undefined) {'use strict';
 
 var urlBase = "/api";
@@ -1010,9 +1015,23 @@ module.factory(
     return R;
   }]);
 
-
-
-
+/**
+ * @ngdoc object
+ * @name lbServices.Todo
+ * @header lbServices.Todo
+ * @object
+ *
+ * @description
+ *
+ * A $resource object for interacting with the `Todo` model.
+ *
+ * ## Example
+ *
+ * See
+ * {@link http://docs.angularjs.org/api/ngResource.$resource#example $resource}
+ * for an example of using this object.
+ *
+ */
 module.factory(
   "Todo",
   ['LoopBackResource', 'LoopBackAuth', '$injector', function(Resource, LoopBackAuth, $injector) {
@@ -1500,94 +1519,6 @@ module.factory(
 
     return R;
   }]);
-
-
-module.factory(
-    "Contribuyentes",
-    ['LoopBackResource', 'LoopBackAuth', '$injector', function(Resource, LoopBackAuth, $injector) {
-            var R = Resource(
-                urlBase + "/contribuyentes/:id",
-                { 'id': '@id' },
-                {
-
-                    "create": {
-                        url: urlBase + "/Todos",
-                        method: "POST"
-                    },
-
-                    "upsert": {
-                        url: urlBase + "/Todos",
-                        method: "PUT"
-                    },
-
-                    "exists": {
-                        url: urlBase + "/Todos/:id/exists",
-                        method: "GET"
-                    },
-
-                    "findById": {
-                        url: urlBase + "/Todos/:id",
-                        method: "GET"
-                    },
-
-                    "find": {
-                        isArray: true,
-                        url: "/api/contribuyentes",
-                        method: "GET"
-                    },
-
-
-                    "findOne": {
-                        url: urlBase + "/Todos/findOne",
-                        method: "GET"
-                    },
-
-                    "updateAll": {
-                        url: urlBase + "/Todos/update",
-                        method: "POST"
-                    },
-
-
-                    "deleteById": {
-                        url: urlBase + "/Todos/:id",
-                        method: "DELETE"
-                    },
-
-                    "count": {
-                        url: urlBase + "/Todos/count",
-                        method: "GET"
-                    },
-
-                    "prototype$updateAttributes": {
-                        url: urlBase + "/Todos/:id",
-                        method: "PUT"
-                    },
-
-                    "createReport": {
-                        url: "/api/contribuyentes/report",
-                        method: "POST",
-                        responseType:'arraybuffer',
-                        headers: {
-                            'Content-type': 'application/json'
-                        }
-                    },
-                }
-            );
-
-
-
-            R["updateOrCreate"] = R["upsert"];
-
-            R["update"] = R["updateAll"];
-
-            R["destroyById"] = R["deleteById"];
-
-            R["removeById"] = R["deleteById"];
-
-            R.modelName = "contribuyente";
-
-            return R;
-    }]);
 
 
 module

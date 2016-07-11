@@ -12,10 +12,17 @@
       }
     }
   },
-  "session": {},
-  "auth": {},
-  "parse": {},
-  "routes": {},
+  "session": {
+  },
+  "auth": {
+  },
+  "parse": {
+  },
+  "routes": {
+    "loopback#rest": {
+      "paths": ["${restApiRoot}"]
+    }
+  },
   "files": {
     "loopback#static": {
       "params": "$!../client"
@@ -23,5 +30,8 @@
   },
   "final": {
     "loopback#urlNotFound": {}
+  },
+  "final:after": {
+    "errorhandler": {}
   }
 }

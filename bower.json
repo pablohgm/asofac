@@ -1,7 +1,8 @@
 {
-  "name": "sql-pwn",
+  "name": "loopback-example-angular",
+  "license": "MIT",
   "version": "0.0.0",
-  "homepage": "",
+  "homepage": "https://github.com/strongloop/loopback-example-angular",
   "ignore": [
     "**/.*",
     "node_modules",

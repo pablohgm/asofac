@@ -3,6 +3,9 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
-module.exports = function(Todo) {
+var test = require('tape');
 
-};
+test('smoke test', function(t) {
+  t.plan(1);
+  t.equal(1, 1);
+});
