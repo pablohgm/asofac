@@ -1,7 +1,7 @@
 {
-  "name": "loopback-example-angular",
-  "version": "1.0.0",
-  "description": "loopback-example-angular",
+  "name": "ASOFAC",
+  "version": "0.0.1",
+  "description": "Sistema de afiliados de cuidados paliativos San Rafael de Ojo de Agua",
   "main": "server/server.js",
   "scripts": {
     "pretest": "jshint .",

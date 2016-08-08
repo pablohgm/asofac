@@ -4,8 +4,20 @@ module.exports = function(Contribuyente) {
     var fs = require('fs');
 
     Contribuyente.report = function(cb){
-        jsreport.render({ template: { content: '<h1>Hello world 2</h1>', engine: 'jsrender', recipe: 'phantom-pdf' } }).then(function(out) {
-            out.stream.pipe(fs.createWriteStream('./client/tmpReport/report.pdf'));
+        jsreport.render({
+            template: {
+                content: fs.readFileSync('./client/views/reciboTemplate.html',  'utf8'),
+                engine: 'jsrender',
+                recipe: 'phantom-pdf',
+                phantom: {
+                    width: "18.5cm",
+                    height: "7.2cm",
+                    margin: "0cm"
+                }
+            }
+        }).then(function(out) {
+            var tmpSteam = out.stream.pipe(fs.createWriteStream('./client/tmpReport/report.pdf'));
+            tmpSteam.on('finish', function () {  cb(null, 'SUCCESS'); });
         }).catch(function(e) {
             cb(e.message);
         });
