@@ -8,27 +8,23 @@
     ]
   },
   "User": {
-    "dataSource": "db"
+    "dataSource": "mysql"
   },
   "AccessToken": {
-    "dataSource": "db",
+    "dataSource": "mysql",
     "public": false
   },
   "ACL": {
-    "dataSource": "db",
+    "dataSource": "mysql",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "db",
+    "dataSource": "mysql",
     "public": false
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "mysql",
     "public": false
-  },
-  "Todo": {
-    "dataSource": "db",
-    "public": true
   },
   "codigo": {
     "dataSource": "mysql",

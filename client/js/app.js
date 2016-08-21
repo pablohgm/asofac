@@ -1,14 +1,15 @@
 angular
   .module('app', [
-    'lbServices',
-    'ui.router'
+    'ui.router',
+    'ngStorage',
+    'ngMaterial'
   ])
 
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
       $urlRouterProvider) {
     $stateProvider
-      .state('todo', {
-        url: '',
+      .state('main', {
+        url: '/',
         templateUrl: '../views/main.html',
         controller: 'AppController'
       })
@@ -17,7 +18,12 @@ angular
         templateUrl: '../views/viewPdf.html',
         controller: 'ViewPdfController'
     })
+    .state('login', {
+        url: '/login',
+        templateUrl: '../views/login.html',
+        controller: 'LoginController'
+    })
     ;
 
-    $urlRouterProvider.otherwise('todo');
+    $urlRouterProvider.otherwise('main');
   }]);

@@ -1,7 +1,7 @@
 angular
   .module('app')
-  .controller('AppController', ['$scope', '$state', '$window', '$location',  'Contribuyentes',
-	  function($scope, $state, $window, $location, Contribuyentes) {
+  .controller('AppController', ['$scope', '$state', '$window', '$location',
+	  function($scope, $state, $window, $location) {
 
   	$scope.contribuyentes = [];
 
@@ -11,23 +11,26 @@ angular
     };
 
     function init() {
-        Contribuyentes.find()
-        .$promise
-        .then(function(results) {
-            $scope.contribuyentes = results;
-        });
+        //if(_.isEmpty()){
+        //    $location.path('/login');
+        //}
+        //Contribuyentes.find()
+        //.$promise
+        //.then(function(results) {
+        //    $scope.contribuyentes = results;
+        //});
     };
 
     $scope.report = function() {
-      Contribuyentes.createReport()
-          .$promise
-          .then(function(response) {
-              console.log('B ...');
-              var file = new Blob([response], {type: 'application/pdf'});
-              var fileURL = URL.createObjectURL(file);
-              console.log('C ...'+fileURL);
-              window.open(fileURL, '_blank');
-          });
+      //Contribuyentes.createReport()
+      //    .$promise
+      //    .then(function(response) {
+      //        console.log('B ...');
+      //        var file = new Blob([response], {type: 'application/pdf'});
+      //        var fileURL = URL.createObjectURL(file);
+      //        console.log('C ...'+fileURL);
+      //        window.open(fileURL, '_blank');
+      //    });
     };
 
     $scope.toViewPdf = function() {
