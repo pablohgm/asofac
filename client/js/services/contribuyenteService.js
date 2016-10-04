@@ -11,5 +11,9 @@ angular
         $http.post('/api/contribuyentes', contribuyente).then(success, error);
     };
 
+    service.delete = function(id, success, error){
+        $http.delete('/api/contribuyentes/'+id).then(success, error);
+    };
+
     return service;
 });

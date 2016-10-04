@@ -5,14 +5,8 @@ angular
 
     var self = this;
   	this.contribuyentes = [];
-    this.selectedList = [];
     this.contribuyente = {};
 
-    this.query = {
-      order: 'name',
-      limit: 5,
-      page: 1
-    };
 
     this.pdf = {
       name: "report.pdf",
@@ -35,30 +29,18 @@ angular
         });
     };
 
-    $scope.delete = function() {
-        var test = this.selectedList;
-        _.forEach(self.selectedList, function(item){
-            if(item.selected){
-                //ContribuyenteService.delete(item, function(result){
-                //    debugger;
-                //    self.contribuyentes.remove(result.data);
-                //}, function(error){
-                //    console.log(error);
-                //});
-            }
+
+    this.delete = function(argItems) {
+        var tmpContribuyentes = this.contribuyentes;
+        _.forEach(argItems, function(itemId){
+            ContribuyenteService.delete(itemId, function(result){
+                _.remove(tmpContribuyentes, function(item){
+                    return item.id == itemId;
+                });
+            }, function(error){
+                console.log(error);
+            });
         });
-    };
-
-    $scope.getContribuyentes = function(){
-        this.promise = ContribuyenteService.getAll(function(results) {
-            self.contribuyentes = results.data;
-        }, function(error){
-            console.log();
-        }).$promise;
-    };
-
-    this.onSelect = function(argItemSelected){
-        console.log('test');
     };
 
     function init() {

@@ -5,8 +5,8 @@
                 <md-button ng-click="toggleRight()" class="md-primary">
                     + Agregar
                 </md-button>
-                <md-button ng-click="delete()" class="md-primary">
-                     - Eliminar
+                <md-button ng-click="edit()" class="md-primary">
+                     # Editar
                 </md-button>
             </div>
         </div>
@@ -62,35 +62,27 @@
             </md-button>
         </md-content>
     </md-sidenav>
-    <md-toolbar class="md-table-toolbar md-default">
-        <div class="md-toolbar-tools">
-            <span>Contribuyentes</span>
-        </div>
-    </md-toolbar>
-    <md-table-container>
-        <table md-table md-row-select multiple ng-model="app.selectedList" md-progress="promise" md-on-select="app.onSelect">
-            <thead md-head md-order="query.order" md-on-reorder="getContribuyentes">
-            <tr md-row>
-                <th md-column>Nombre</th>
-                <th md-column>Primer apellido</th>
-                <th md-column>Segundo apellido</th>
-                <th md-column>Teléfono</th>
-                <th md-column>Monto</th>
-                <th md-column>Activo</th>
-                <th md-column>Dirección</th>
-            </tr>
-            </thead>
-            <tbody md-body>
-            <tr md-row md-select="contribuyente" md-select-id="nombre" md-auto-select ng-repeat="contribuyente in app.contribuyentes">
-                <td md-cell>{{contribuyente.nombre}}</td>
-                <td md-cell>{{contribuyente.Apellido1}}</td>
-                <td md-cell>{{contribuyente.Apellido2}}</td>
-                <td md-cell>{{contribuyente.telefono}}</td>
-                <td md-cell>{{contribuyente.monto}}</td>
-                <td md-cell>{{contribuyente.activo}}</td>
-                <td md-cell>{{contribuyente.direccion}}</td>
-            </tr>
-            </tbody>
-        </table>
-    </md-table-container>
+    <mdt-table table-card="{visible: true, title: 'Contribuyentes'}"
+               selectable-rows="true"
+               alternate-headers="'contextual'"
+               delete-row-callback="app.delete(rows)">
+        <mdt-header-row>
+            <mdt-column align-rule="left">Nombre</mdt-column>
+            <mdt-column align-rule="right">Primer apellido</mdt-column>
+            <mdt-column align-rule="right">Segundo apellido</mdt-column>
+            <mdt-column align-rule="right">Teléfono</mdt-column>
+            <mdt-column align-rule="right">Monto</mdt-column>
+            <mdt-column align-rule="right">Activo</mdt-column>
+            <mdt-column align-rule="left">Dirección</mdt-column>
+        </mdt-header-row>
+        <mdt-row table-row-id="contribuyente.id" ng-repeat="contribuyente in app.contribuyentes">
+            <mdt-cell>{{contribuyente.nombre}}</mdt-cell>
+            <mdt-cell>{{contribuyente.Apellido1}}</mdt-cell>
+            <mdt-cell>{{contribuyente.Apellido2}}</mdt-cell>
+            <mdt-cell>{{contribuyente.telefono}}</mdt-cell>
+            <mdt-cell>{{contribuyente.monto}}</mdt-cell>
+            <mdt-cell>{{contribuyente.activo}}</mdt-cell>
+            <mdt-cell>{{contribuyente.direccion}}</mdt-cell>
+        </mdt-row>
+    </mdt-table>
 </div>

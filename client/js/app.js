@@ -3,7 +3,7 @@ angular
     'ui.router',
     'ngStorage',
     'ngMaterial',
-    'md.data.table'
+    'mdDataTable'
   ])
 
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider,

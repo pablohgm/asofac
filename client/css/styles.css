@@ -13,6 +13,14 @@ md-toolbar:not(.md-menu-toolbar) {
   background-color: rgb(25, 138, 210);
 }
 
+.mdt-header {
+  background-color: rgb(25, 138, 210);
+}
+
+.mdt-header span {
+  color: #ffffff;
+}
+
 md-input-container {
   margin: 0;
 }
