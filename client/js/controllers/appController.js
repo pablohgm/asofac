@@ -1,24 +1,72 @@
 angular
   .module('app')
-  .controller('AppController', ['$scope', '$state', '$window', '$location',
-	  function($scope, $state, $window, $location) {
+  .controller('AppController', ['$scope', '$state', '$window', '$location', '$mdSidenav', 'ContribuyenteService',
+	  function($scope, $state, $window, $location, $mdSidenav, ContribuyenteService) {
 
-  	$scope.contribuyentes = [];
+    var self = this;
+  	this.contribuyentes = [];
+    this.selectedList = [];
+    this.contribuyente = {};
 
-    $scope.pdf = {
+    this.query = {
+      order: 'name',
+      limit: 5,
+      page: 1
+    };
+
+    this.pdf = {
       name: "report.pdf",
       src: "http://0.0.0.0:3000/tmpReport/"
     };
 
+    $scope.toggleRight = function() {
+        $mdSidenav('right').toggle();
+    };
+
+    $scope.close = function() {
+        $mdSidenav('right').close();
+    };
+
+    $scope.save = function() {
+        ContribuyenteService.save(this.contribuyente, function(result){
+            self.contribuyentes.add(result.data);
+        }, function(error){
+            console.log(error);
+        });
+    };
+
+    $scope.delete = function() {
+        var test = this.selectedList;
+        _.forEach(self.selectedList, function(item){
+            if(item.selected){
+                //ContribuyenteService.delete(item, function(result){
+                //    debugger;
+                //    self.contribuyentes.remove(result.data);
+                //}, function(error){
+                //    console.log(error);
+                //});
+            }
+        });
+    };
+
+    $scope.getContribuyentes = function(){
+        this.promise = ContribuyenteService.getAll(function(results) {
+            self.contribuyentes = results.data;
+        }, function(error){
+            console.log();
+        }).$promise;
+    };
+
+    this.onSelect = function(argItemSelected){
+        console.log('test');
+    };
+
     function init() {
-        //if(_.isEmpty()){
-        //    $location.path('/login');
-        //}
-        //Contribuyentes.find()
-        //.$promise
-        //.then(function(results) {
-        //    $scope.contribuyentes = results;
-        //});
+        ContribuyenteService.getAll(function(results) {
+            self.contribuyentes = results.data;
+        }, function(error){
+            console.log();
+        });
     };
 
     $scope.report = function() {

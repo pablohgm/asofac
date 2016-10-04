@@ -1,5 +1,4 @@
 body {
-  padding-top:50px
 }
 .glyphicon-remove:hover {
   cursor:pointer
@@ -8,4 +7,12 @@ body {
 .grid {
   width: 500px;
   height: 400px;
+}
+
+md-toolbar:not(.md-menu-toolbar) {
+  background-color: rgb(25, 138, 210);
+}
+
+md-input-container {
+  margin: 0;
 }

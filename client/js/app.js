@@ -2,14 +2,15 @@ angular
   .module('app', [
     'ui.router',
     'ngStorage',
-    'ngMaterial'
+    'ngMaterial',
+    'md.data.table'
   ])
 
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
       $urlRouterProvider) {
     $stateProvider
       .state('main', {
-        url: '/',
+        url: '/main',
         templateUrl: '../views/main.html',
         controller: 'AppController'
       })
