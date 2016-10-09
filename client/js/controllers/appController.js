@@ -1,12 +1,15 @@
 angular
   .module('app')
-  .controller('AppController', ['$scope', '$state', '$window', '$location', '$mdSidenav', 'ContribuyenteService',
-	  function($scope, $state, $window, $location, $mdSidenav, ContribuyenteService) {
+  .controller('AppController', ['$scope', '$state', '$window', '$location',
+              '$mdSidenav', 'ContribuyenteService', 'SectorService', 'TipoService',
+	  function($scope, $state, $window, $location, $mdSidenav, ContribuyenteService, SectorService, TipoService) {
 
     var self = this;
   	this.contribuyentes = [];
     this.contribuyente = {};
-
+    this.sectores = [];
+    this.tipos = [];
+    this.selected = [];
 
     this.pdf = {
       name: "report.pdf",
@@ -21,9 +24,21 @@ angular
         $mdSidenav('right').close();
     };
 
+    $scope.edit = function() {
+      self.contribuyente = self.selected.pop();
+    };
+
+
+    this.onSelect = function(argItem) {
+      self.selected.unshift(argItem);
+    };
+
+
     $scope.save = function() {
         ContribuyenteService.save(this.contribuyente, function(result){
-            self.contribuyentes.add(result.data);
+            self.contribuyentes.unshift(result.data);
+            self.contribuyente = {};
+            $scope.close();
         }, function(error){
             console.log(error);
         });
@@ -46,6 +61,16 @@ angular
     function init() {
         ContribuyenteService.getAll(function(results) {
             self.contribuyentes = results.data;
+        }, function(error){
+            console.log();
+        });
+        SectorService.getAll(function(results) {
+            self.sectores = results.data;
+        }, function(error){
+            console.log();
+        });
+        TipoService.getAll(function(results) {
+            self.tipos = results.data;
         }, function(error){
             console.log();
         });

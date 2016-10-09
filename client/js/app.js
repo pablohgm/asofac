@@ -12,7 +12,7 @@ angular
       .state('main', {
         url: '/main',
         templateUrl: '../views/main.html',
-        controller: 'AppController'
+        controller: 'AppController as app'
       })
     .state('viewPdf', {
         url: '/viewPdf',

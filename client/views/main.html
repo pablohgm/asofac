@@ -27,31 +27,28 @@
                 </md-input-container>
                 <md-input-container>
                     <label for="segundoApellido">Segundo Apellido</label>
-                    <input type="text" id="segundoApellido" ng-model="contribuyente.Apellido2" md-autofocus="">
+                    <input type="text" id="segundoApellido" ng-model="contribuyente.Apellido2" >
                 </md-input-container>
                 <md-input-container>
                     <label for="telefono">Teléfono</label>
-                    <input type="text" id="telefono" ng-model="contribuyente.telefono" md-autofocus="">
+                    <input type="text" id="telefono" ng-model="contribuyente.telefono" >
                 </md-input-container>
                 <md-input-container>
                     <label for="monto">Monto</label>
-                    <input type="text" id="monto" ng-model="contribuyente.monto" md-autofocus="">
+                    <input type="text" id="monto" ng-model="contribuyente.monto" >
                 </md-input-container>
-                <md-input-container>
-                    <label for="tipoContribucion">Tipo Contribución</label>
-                    <input type="text" id="tipoContribucion" ng-model="contribuyente.tipoContribucion" md-autofocus="">
-                </md-input-container>
-                <md-input-container>
-                    <label for="activo">Activo</label>
-                    <input type="text" id="activo" ng-model="contribuyente.activo" md-autofocus="">
-                </md-input-container>
-                <md-input-container>
-                    <label for="sector">Sector</label>
-                    <input type="text" id="sector" ng-model="contribuyente.sector" md-autofocus="">
-                </md-input-container>
+                <md-select id="tipoContribucion" ng-model="contribuyente.tipoContribucion" placeholder="Tipo de contribución" >
+                    <md-option ng-value="tmpTipo.id" ng-repeat="tmpTipo in app.tipos">{{ tmpTipo.informacion }}</md-option>
+                </md-select>
+                <md-switch id="activo" ng-model="contribuyente.activo" aria-label="Activo ?" ng-true-value="1" ng-false-value="0">
+                    Activo ?
+                </md-switch>
+                <md-select id="sector" ng-model="contribuyente.sector" placeholder="Sector" >
+                    <md-option ng-value="tmpSector.id" ng-repeat="tmpSector in app.sectores">{{ tmpSector.informacion }}</md-option>
+                </md-select>
                 <md-input-container>
                     <label for="direccion">Dirección</label>
-                    <input type="text" id="direccion" ng-model="contribuyente.direccion" md-autofocus="">
+                    <input type="text" id="direccion" ng-model="contribuyente.direccion" >
                 </md-input-container>
             </form>
             <md-button ng-click="save()" class="md-primary">
@@ -65,6 +62,7 @@
     <mdt-table table-card="{visible: true, title: 'Contribuyentes'}"
                selectable-rows="true"
                alternate-headers="'contextual'"
+               selected-row-callback="app.onSelect(rows)"
                delete-row-callback="app.delete(rows)">
         <mdt-header-row>
             <mdt-column align-rule="left">Nombre</mdt-column>
