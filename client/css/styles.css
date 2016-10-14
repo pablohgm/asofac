@@ -24,3 +24,7 @@ md-toolbar:not(.md-menu-toolbar) {
 md-input-container {
   margin: 0;
 }
+
+.label-switch span {
+  color: rgb(158, 158, 158);
+}

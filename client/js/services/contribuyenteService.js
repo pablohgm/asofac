@@ -11,6 +11,11 @@ angular
         $http.post('/api/contribuyentes', contribuyente).then(success, error);
     };
 
+    service.edit = function(contribuyente, success, error){
+        contribuyente.sector = contribuyente.sector.id;
+        $http.put('/api/contribuyentes/'+contribuyente.id, contribuyente).then(success, error);
+    };
+
     service.delete = function(id, success, error){
         $http.delete('/api/contribuyentes/'+id).then(success, error);
     };

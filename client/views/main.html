@@ -2,11 +2,14 @@
     <md-content flex="" layout-padding="">
         <div layout="column" layout-align="top left">
             <div>
-                <md-button ng-click="toggleRight()" class="md-primary">
+                <md-button ng-click="app.onToggleRight()" class="md-primary">
                     + Agregar
                 </md-button>
-                <md-button ng-click="edit()" class="md-primary">
+                <md-button ng-click="app.onEdit()" class="md-primary">
                      # Editar
+                </md-button>
+                <md-button ng-click="app.onDelete()" class="md-primary">
+                    - Eliminar
                 </md-button>
             </div>
         </div>
@@ -19,68 +22,73 @@
             <form class="form-contribuyente">
                 <md-input-container>
                     <label for="nombre">nombre</label>
-                    <input type="text" id="nombre" ng-model="contribuyente.nombre" md-autofocus="">
+                    <input type="text" id="nombre" ng-model="app.contribuyente.nombre" md-autofocus="">
                 </md-input-container>
                 <md-input-container>
                     <label for="primerApellido">Primer Apellido</label>
-                    <input type="text" id="primerApellido" ng-model="contribuyente.Apellido1">
+                    <input type="text" id="primerApellido" ng-model="app.contribuyente.Apellido1">
                 </md-input-container>
                 <md-input-container>
                     <label for="segundoApellido">Segundo Apellido</label>
-                    <input type="text" id="segundoApellido" ng-model="contribuyente.Apellido2" >
+                    <input type="text" id="segundoApellido" ng-model="app.contribuyente.Apellido2" >
                 </md-input-container>
                 <md-input-container>
                     <label for="telefono">Teléfono</label>
-                    <input type="text" id="telefono" ng-model="contribuyente.telefono" >
+                    <input type="text" id="telefono" ng-model="app.contribuyente.telefono" ng-pattern="/^[0-9]{4}-[0-9]{4}$/" placeholder="####-####">
                 </md-input-container>
                 <md-input-container>
                     <label for="monto">Monto</label>
-                    <input type="text" id="monto" ng-model="contribuyente.monto" >
+                    <input type="text" id="monto" ng-model="app.contribuyente.monto" ng-pattern="/^[0-9]*$/">
                 </md-input-container>
-                <md-select id="tipoContribucion" ng-model="contribuyente.tipoContribucion" placeholder="Tipo de contribución" >
+                <md-select id="tipoContribucion" ng-model="app.contribuyente.tipoContribucion" placeholder="Tipo de contribución" >
                     <md-option ng-value="tmpTipo.id" ng-repeat="tmpTipo in app.tipos">{{ tmpTipo.informacion }}</md-option>
                 </md-select>
-                <md-switch id="activo" ng-model="contribuyente.activo" aria-label="Activo ?" ng-true-value="1" ng-false-value="0">
-                    Activo ?
+                <md-switch id="activo" class="label-switch" ng-model="app.contribuyente.activo" aria-label="Activo" ng-true-value="1" ng-false-value="0">
+                    Activo
                 </md-switch>
-                <md-select id="sector" ng-model="contribuyente.sector" placeholder="Sector" >
+                <md-select id="sector" ng-model="app.contribuyente.sector.id" placeholder="Sector" >
                     <md-option ng-value="tmpSector.id" ng-repeat="tmpSector in app.sectores">{{ tmpSector.informacion }}</md-option>
                 </md-select>
                 <md-input-container>
                     <label for="direccion">Dirección</label>
-                    <input type="text" id="direccion" ng-model="contribuyente.direccion" >
+                    <input type="text" id="direccion" ng-model="app.contribuyente.direccion" >
                 </md-input-container>
             </form>
-            <md-button ng-click="save()" class="md-primary">
+            <md-button ng-click="app.onSave()" class="md-primary">
                 Guardar
             </md-button>
-            <md-button ng-click="close()" class="md-primary">
+            <md-button ng-click="app.onClose()" class="md-primary">
                 Cerrar
             </md-button>
         </md-content>
     </md-sidenav>
-    <mdt-table table-card="{visible: true, title: 'Contribuyentes'}"
-               selectable-rows="true"
-               alternate-headers="'contextual'"
-               selected-row-callback="app.onSelect(rows)"
-               delete-row-callback="app.delete(rows)">
-        <mdt-header-row>
-            <mdt-column align-rule="left">Nombre</mdt-column>
-            <mdt-column align-rule="right">Primer apellido</mdt-column>
-            <mdt-column align-rule="right">Segundo apellido</mdt-column>
-            <mdt-column align-rule="right">Teléfono</mdt-column>
-            <mdt-column align-rule="right">Monto</mdt-column>
-            <mdt-column align-rule="right">Activo</mdt-column>
-            <mdt-column align-rule="left">Dirección</mdt-column>
-        </mdt-header-row>
-        <mdt-row table-row-id="contribuyente.id" ng-repeat="contribuyente in app.contribuyentes">
-            <mdt-cell>{{contribuyente.nombre}}</mdt-cell>
-            <mdt-cell>{{contribuyente.Apellido1}}</mdt-cell>
-            <mdt-cell>{{contribuyente.Apellido2}}</mdt-cell>
-            <mdt-cell>{{contribuyente.telefono}}</mdt-cell>
-            <mdt-cell>{{contribuyente.monto}}</mdt-cell>
-            <mdt-cell>{{contribuyente.activo}}</mdt-cell>
-            <mdt-cell>{{contribuyente.direccion}}</mdt-cell>
-        </mdt-row>
-    </mdt-table>
+    <div class="table">
+        <table>
+            <tr>
+                <th></th>
+                <th class="first">Nombre</th>
+                <th>Primer apellido</th>
+                <th>Segundo apellido</th>
+                <th>Teléfono</th>
+                <th>Monto</th>
+                <th>Activo</th>
+                <th>Sector</th>
+                <th>Dirección</th>
+            </tr>
+            <tr ng-repeat="contribuyente in app.contribuyentes">
+                <td class="checkboxCell">
+                    <md-checkbox ng-click="app.onSelect(contribuyente)" ng-model="contribuyente.selected"></md-checkbox>
+                </td>
+                <td>{{contribuyente.nombre}}</td>
+                <td>{{contribuyente.Apellido1}}</td>
+                <td>{{contribuyente.Apellido2}}</td>
+                <td>{{contribuyente.telefono}}</td>
+                <td>{{contribuyente.monto}}</td>
+                <td >{{contribuyente.activo == 0 ? 'No' : 'Si'}}</td>
+                <td>{{contribuyente.sector.informacion}}</td>
+                <!--<td>{{app.getSector(contribuyente.sector)}}</td>-->
+                <td>{{contribuyente.direccion}}</td>
+            </tr>
+        </table>
+    </div>
 </div>

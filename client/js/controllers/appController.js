@@ -9,63 +9,103 @@ angular
     this.contribuyente = {};
     this.sectores = [];
     this.tipos = [];
-    this.selected = [];
 
     this.pdf = {
       name: "report.pdf",
       src: "http://0.0.0.0:3000/tmpReport/"
     };
 
-    $scope.toggleRight = function() {
+    this.onToggleRight = function() {
         $mdSidenav('right').toggle();
     };
 
-    $scope.close = function() {
+    this.onClose = function() {
         $mdSidenav('right').close();
     };
 
-    $scope.edit = function() {
-      self.contribuyente = self.selected.pop();
+    this.onEdit = function() {
+        _.forEach(self.contribuyentes, function(item){
+            if(item.selected){
+                self.contribuyente = angular.copy(item);
+                self.contribuyente.toEdit = true;
+                $mdSidenav('right').toggle();
+                return;
+            }
+        });
     };
-
 
     this.onSelect = function(argItem) {
-      self.selected.unshift(argItem);
+        _.forEach(self.contribuyentes, function(item){
+            if(item.id !== argItem.id){
+                item.selected = false;
+            }
+        });
     };
 
+    this.onSave = function() {
+        if(this.contribuyente.toEdit){
+            this.edit();
+            return;
+        }
+        this.save();
+    };
 
-    $scope.save = function() {
-        ContribuyenteService.save(this.contribuyente, function(result){
-            self.contribuyentes.unshift(result.data);
+    this.edit = function() {
+        ContribuyenteService.edit(this.contribuyente, function(result){
+            var tmpIndex = _.findIndex(self.contribuyentes, function(item){
+                return item.id === result.data.id;
+            });
+            result.data.sector = self.getSector(result.data.sector);
+            self.contribuyentes[tmpIndex] = result.data;
             self.contribuyente = {};
-            $scope.close();
+            self.onClose();
         }, function(error){
             console.log(error);
         });
-    };
+    }
+
+    this.save = function() {
+        ContribuyenteService.save(this.contribuyente, function(result){
+            self.contribuyentes.unshift(result.data);
+            self.contribuyente = {};
+            self.onClose();
+        }, function(error){
+            console.log(error);
+        });
+    }
 
 
-    this.delete = function(argItems) {
-        var tmpContribuyentes = this.contribuyentes;
-        _.forEach(argItems, function(itemId){
-            ContribuyenteService.delete(itemId, function(result){
-                _.remove(tmpContribuyentes, function(item){
-                    return item.id == itemId;
-                });
-            }, function(error){
-                console.log(error);
-            });
+    this.onDelete = function() {
+        if(!this.contribuyente.id){
+            return;
+        }
+        _.forEach(this.contribuyentes, function(item){
+            if(item.selected === true){
+                self.delete(item.id);
+            }
         });
     };
+
+    this.delete = function (argId){
+        ContribuyenteService.delete(argId, function(){
+            _.remove(self.contribuyentes, function(item){
+                return item.id == argId;
+            });
+            self.contribuyente = {};
+        }, function(error){
+            console.log(error);
+        });
+    }
 
     function init() {
         ContribuyenteService.getAll(function(results) {
             self.contribuyentes = results.data;
-        }, function(error){
-            console.log();
-        });
-        SectorService.getAll(function(results) {
-            self.sectores = results.data;
+            SectorService.getAll(function(results) {
+                self.sectores = results.data;
+                self.setSector();
+            }, function(error){
+                console.log();
+            })
         }, function(error){
             console.log();
         });
@@ -88,8 +128,22 @@ angular
       //    });
     };
 
-    $scope.toViewPdf = function() {
+    this.toViewPdf = function() {
         $window.open($scope.pdf.src + $scope.pdf.name);
+    };
+
+    this.getSector = function(argId){
+        var tmpSector;
+        tmpSector=  _.find(this.sectores, function(item){
+            return item.id == argId;
+        });
+        return tmpSector;
+    };
+
+    this.setSector = function() {
+        _.forEach(this.contribuyentes, function(item){
+            item.sector = self.getSector(item.sector);
+        });
     };
 
   	init();

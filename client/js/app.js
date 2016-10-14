@@ -2,8 +2,7 @@ angular
   .module('app', [
     'ui.router',
     'ngStorage',
-    'ngMaterial',
-    'mdDataTable'
+    'ngMaterial'
   ])
 
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
