@@ -2,7 +2,9 @@ angular
   .module('app', [
     'ui.router',
     'ngStorage',
-    'ngMaterial'
+    'ngMaterial',
+    'ngMessages',
+    'ngMdIcons'
   ])
 
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider,

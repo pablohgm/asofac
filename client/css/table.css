@@ -144,6 +144,10 @@
 .table .checkboxCell + td, .table .checkboxCell + th {
   padding-left: 24px;
 }
+.table .checkboxCell + td, .table .checkboxCell + th .edit{
+  padding-right: 22px;
+  cursor: pointer;
+}
 .table tr td {
   padding: 0;
   height: 48px;

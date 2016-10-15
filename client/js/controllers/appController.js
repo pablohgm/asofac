@@ -5,6 +5,7 @@ angular
 	  function($scope, $state, $window, $location, $mdSidenav, ContribuyenteService, SectorService, TipoService) {
 
     var self = this;
+    this.selectAll = false;
   	this.contribuyentes = [];
     this.contribuyente = {};
     this.sectores = [];
@@ -16,6 +17,9 @@ angular
     };
 
     this.onToggleRight = function() {
+        var tmpform = $scope.contribuyenteForm;
+        tmpform.$setUntouched();
+        this.contribuyente = {};
         $mdSidenav('right').toggle();
     };
 
@@ -23,22 +27,15 @@ angular
         $mdSidenav('right').close();
     };
 
-    this.onEdit = function() {
-        _.forEach(self.contribuyentes, function(item){
-            if(item.selected){
-                self.contribuyente = angular.copy(item);
-                self.contribuyente.toEdit = true;
-                $mdSidenav('right').toggle();
-                return;
-            }
-        });
+    this.onEdit = function(item) {
+        self.contribuyente = angular.copy(item);
+        self.contribuyente.toEdit = true;
+        $mdSidenav('right').toggle();
     };
 
-    this.onSelect = function(argItem) {
+    this.onSelect = function(argValue) {
         _.forEach(self.contribuyentes, function(item){
-            if(item.id !== argItem.id){
-                item.selected = false;
-            }
+            item.selected = argValue;
         });
     };
 
@@ -66,6 +63,7 @@ angular
 
     this.save = function() {
         ContribuyenteService.save(this.contribuyente, function(result){
+            result.data.sector = self.getSector(result.data.sector);
             self.contribuyentes.unshift(result.data);
             self.contribuyente = {};
             self.onClose();
@@ -76,9 +74,6 @@ angular
 
 
     this.onDelete = function() {
-        if(!this.contribuyente.id){
-            return;
-        }
         _.forEach(this.contribuyentes, function(item){
             if(item.selected === true){
                 self.delete(item.id);
@@ -91,7 +86,6 @@ angular
             _.remove(self.contribuyentes, function(item){
                 return item.id == argId;
             });
-            self.contribuyente = {};
         }, function(error){
             console.log(error);
         });

@@ -8,6 +8,7 @@ angular
     };
 
     service.save = function(contribuyente, success, error){
+        contribuyente.sector = contribuyente.sector.id;
         $http.post('/api/contribuyentes', contribuyente).then(success, error);
     };
 
