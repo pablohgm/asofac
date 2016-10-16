@@ -1,6 +1,6 @@
 angular
   .module('app')
-  .controller('AppController', ['$scope', '$state', '$window', '$location', '$sessionStorage',
+  .controller('SectorController', ['$scope', '$state', '$window', '$location', '$sessionStorage',
 	  function($scope, $state, $window, $location, $sessionStorage) {
 
     function init() {
@@ -8,7 +8,6 @@ angular
             $location.url('/login');
             return;
         }
-        $state.go('main.contribuyente');
     };
 
   	init();

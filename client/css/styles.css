@@ -1,5 +1,14 @@
 body {
 }
+
+.login {
+ margin-top: 10%;
+}
+
+.login-content {
+  margin: 14px;
+}
+
 .glyphicon-remove:hover {
   cursor:pointer
 }

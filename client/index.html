@@ -19,16 +19,8 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
   </head>
-  <body ng-app="app">
-    <md-toolbar class="custom-toolbar">
-      <div class="md-toolbar-tools">
-        <span>ASOFAC</span>
-        <span flex></span>
-        <md-button>
-          +
-        </md-button>
-      </div>
-    </md-toolbar>
+  <body ng-app="app" ng-controller="AppController as app">
+
     <div class="container">
       <div ui-view></div>
     </div>
@@ -54,10 +46,12 @@
     <script src="js/services/sectorService.js"></script>
     <script src="js/services/tipoService.js"></script>
 
-    <script src="js/controllers/todo.js"></script>
     <script src="js/controllers/appController.js"></script>
     <script src="js/controllers/viewPdfController.js"></script>
     <script src="js/controllers/loginController.js"></script>
+    <script src="js/controllers/sectorController.js"></script>
+    <script src="js/controllers/tipoController.js"></script>
+    <script src="js/controllers/contribuyenteController.js"></script>
 
   </body>
 </html>

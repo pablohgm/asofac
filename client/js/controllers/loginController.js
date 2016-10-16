@@ -9,13 +9,13 @@ angular
             console.log('Init Login');
         };
 
-        $scope.submit = function(){
+        this.submit = function(){
             UserService.login(this.user, successLogin, errorLogin);
 
         };
 
-        function successLogin (user) {
-            $sessionStorage.token = user.id
+        function successLogin (result) {
+            $sessionStorage.token = result.data.id;
             $location.url('/');
         }
 

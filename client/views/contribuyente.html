@@ -1,0 +1,116 @@
+<div ng-controller="ContribuyenteController as ContribuyenteCtrl">
+    <md-content flex="" layout-padding="">
+        <div layout="column" layout-align="top left">
+            <div>
+                <md-button ng-click="ContribuyenteCtrl.onToggleRight()" class="md-primary">
+                    + Agregar
+                </md-button>
+                <md-button ng-click="ContribuyenteCtrl.onDelete()" class="md-primary">
+                    - Eliminar
+                </md-button>
+            </div>
+        </div>
+    </md-content>
+    <md-sidenav class="md-sidenav-left md-whiteframe-4dp" md-component-id="right">
+        <md-toolbar class="md-theme-left">
+            <h1 class="md-toolbar-tools">Formulario de Contribuyentes</h1>
+        </md-toolbar>
+        <md-content layout-padding="">
+            <form class="form-contribuyente" name="contribuyenteForm" novalidate ng-submit="ContribuyenteCtrl.onSave()">
+                <md-input-container>
+                    <label for="nombre">nombre</label>
+                    <input type="text" id="nombre" name="nombre" ng-model="ContribuyenteCtrl.contribuyente.nombre" required md-autofocus="">
+                    <div ng-messages="contribuyenteForm.nombre.$error">
+                        <ng-message when="required">Este campo es requerido!</ng-message>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <label for="primerApellido">Primer Apellido</label>
+                    <input type="text" id="primerApellido" name="apellido1" ng-model="ContribuyenteCtrl.contribuyente.Apellido1" required>
+                    <div ng-messages="contribuyenteForm.apellido1.$error">
+                        <ng-message when="required">Este campo es requerido!</ng-message>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <label for="segundoApellido">Segundo Apellido</label>
+                    <input type="text" id="segundoApellido" name="apellido2" ng-model="ContribuyenteCtrl.contribuyente.Apellido2" required>
+                    <div ng-messages="contribuyenteForm.apellido2.$error">
+                        <ng-message when="required">Este campo es requerido!</ng-message>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <label for="telefono">Teléfono</label>
+                    <input type="text" id="telefono" name="telefono" ng-model="ContribuyenteCtrl.contribuyente.telefono" ng-pattern="/^[0-9]{4}-[0-9]{4}$/" placeholder="####-####" required>
+                    <div ng-messages="contribuyenteForm.telefono.$error">
+                        <ng-message when="required">Este campo se requiere en su correcto formato!</ng-message>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <label for="monto">Monto</label>
+                    <input type="text" id="monto" name="monto" ng-model="ContribuyenteCtrl.contribuyente.monto" ng-pattern="/^[0-9]*$/" required>
+                    <div ng-messages="contribuyenteForm.monto.$error">
+                        <ng-message when="required">Este campo numerico es requerido!</ng-message>
+                    </div>
+                </md-input-container>
+                <md-select id="tipoContribucion" name="tipoContribucion" ng-model="ContribuyenteCtrl.contribuyente.tipoContribucion" placeholder="Tipo de contribución" required>
+                    <md-option ng-value="tmpTipo.id" ng-repeat="tmpTipo in ContribuyenteCtrl.tipos">{{ tmpTipo.informacion }}</md-option>
+                </md-select>
+                <md-switch id="activo" class="label-switch" ng-model="ContribuyenteCtrl.contribuyente.activo" aria-label="Activo" ng-true-value="1" ng-false-value="0">
+                    Activo
+                </md-switch>
+                <md-select id="sector" ng-model="ContribuyenteCtrl.contribuyente.sector.id" placeholder="Sector" required>
+                    <md-option ng-value="tmpSector.id" ng-repeat="tmpSector in ContribuyenteCtrl.sectores">{{ tmpSector.informacion }}</md-option>
+                </md-select>
+                <md-input-container>
+                    <label for="direccion">Dirección</label>
+                    <input type="text" id="direccion" name="direccion" ng-model="ContribuyenteCtrl.contribuyente.direccion" required>
+                    <div ng-messages="contribuyenteForm.direccion.$error">
+                        <ng-message when="required">Este campo numerico es requerido!</ng-message>
+                    </div>
+                </md-input-container>
+                <br>
+                <md-button type="submit" ng-disabled="contribuyenteForm.$invalid" md-no-ink class="md-primary">
+                    Guardar
+                </md-button>
+                <md-button ng-click="ContribuyenteCtrl.onClose()" class="md-primary">
+                    Cerrar
+                </md-button>
+            </form>
+
+        </md-content>
+    </md-sidenav>
+    <div class="table">
+        <table>
+            <tr>
+                <th class="checkboxCell">
+                    <md-checkbox ng-model="ContribuyenteCtrl.selectAll" ng-change="ContribuyenteCtrl.onSelect(ContribuyenteCtrl.selectAll)" aria-label="Select All"></md-checkbox>
+                </th>
+                <th class="edit">Edición</th>
+                <th class="first">Nombre</th>
+                <th>Primer apellido</th>
+                <th>Segundo apellido</th>
+                <th>Teléfono</th>
+                <th>Monto</th>
+                <th>Activo</th>
+                <th>Sector</th>
+                <th>Dirección</th>
+            </tr>
+            <tr ng-repeat="contribuyente in ContribuyenteCtrl.contribuyentes">
+                <td class="checkboxCell">
+                    <md-checkbox ng-model="contribuyente.selected" aria-label="Select"></md-checkbox>
+                </td>
+                <td>
+                    <ng-md-icon ng-click="ContribuyenteCtrl.onEdit(contribuyente)" icon="mode_edit" style="fill:rgba(0, 0, 0, 0.54)" size="18"></ng-md-icon>
+                </td>
+                <td>{{contribuyente.nombre}}</td>
+                <td>{{contribuyente.Apellido1}}</td>
+                <td>{{contribuyente.Apellido2}}</td>
+                <td>{{contribuyente.telefono}}</td>
+                <td>{{contribuyente.monto}}</td>
+                <td >{{contribuyente.activo == 0 ? 'No' : 'Si'}}</td>
+                <td>{{contribuyente.sector.informacion}}</td>
+                <td>{{contribuyente.direccion}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
