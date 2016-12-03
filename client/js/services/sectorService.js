@@ -11,6 +11,10 @@ angular
         $http.post('/api/sectors', sector).then(success, error);
     };
 
+    service.edit = function(sector, success, error){
+        $http.put('/api/sectors/'+sector.id, sector).then(success, error);
+    };
+
     service.delete = function(id, success, error){
         $http.delete('/api/sectors/'+id).then(success, error);
     };

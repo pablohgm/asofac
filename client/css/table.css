@@ -33,6 +33,7 @@
 .table table {
   width: 100%;
   display: table;
+  border-collapse: collapse;
 }
 .table table:focus {
   outline: none;
