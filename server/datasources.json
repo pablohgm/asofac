@@ -10,6 +10,8 @@
     "password": "root",
     "name": "mysql",
     "user": "root",
-    "connector": "mysql"
+    "connector": "mysql",
+    "connectTimeout": 20000,
+    "acquireTimeout": 20000
   }
 }

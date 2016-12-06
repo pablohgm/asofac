@@ -12,7 +12,8 @@ module.exports = function(Contribuyente) {
                 phantom: {
                     width: "18.5cm",
                     height: "7.2cm",
-                    margin: "0cm"
+                    margin: "0cm",
+                    phantomjsVersion: "2.1.1"
                 }
             }
         }).then(function(out) {
