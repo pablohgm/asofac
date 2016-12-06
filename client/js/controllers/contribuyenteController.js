@@ -110,16 +110,15 @@ angular
         });
     };
 
-    $scope.report = function() {
-      //Contribuyentes.createReport()
-      //    .$promise
-      //    .then(function(response) {
-      //        console.log('B ...');
-      //        var file = new Blob([response], {type: 'application/pdf'});
-      //        var fileURL = URL.createObjectURL(file);
-      //        console.log('C ...'+fileURL);
-      //        window.open(fileURL, '_blank');
-      //    });
+    this.onReport = function() {
+        ContribuyenteService.createReport(function(response) {
+            var file = new Blob([response.data], {type: 'application/pdf'});
+            var fileURL = URL.createObjectURL(file);
+            console.log('C ...'+fileURL);
+            window.open(fileURL, '_blank');
+          }, function(e){
+            console.log(e);
+          });
     };
 
     this.toViewPdf = function() {

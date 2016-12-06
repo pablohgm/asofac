@@ -17,6 +17,17 @@ angular
         $http.put('/api/contribuyentes/'+contribuyente.id, contribuyente).then(success, error);
     };
 
+    service.createReport = function(success, error){
+        $http({
+            method: 'POST',
+            url: '/api/contribuyentes/report',
+            responseType:'arraybuffer',
+            headers: {
+                'Content-type': 'application/json'
+            }
+        }).then(success, error);
+    };
+
     service.delete = function(id, success, error){
         $http.delete('/api/contribuyentes/'+id).then(success, error);
     };

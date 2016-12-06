@@ -17,8 +17,7 @@ module.exports = function(Contribuyente) {
                 }
             }
         }).then(function(out) {
-            var tmpSteam = out.stream.pipe(fs.createWriteStream('./client/tmpReport/report.pdf'));
-            tmpSteam.on('finish', function () {  cb(null, 'SUCCESS'); });
+            cb(null, out.stream, 'application/octet-stream');
         }).catch(function(e) {
             cb(e.message);
         });
