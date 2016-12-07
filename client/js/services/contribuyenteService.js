@@ -17,10 +17,14 @@ angular
         $http.put('/api/contribuyentes/'+contribuyente.id, contribuyente).then(success, error);
     };
 
-    service.createReport = function(success, error){
+    service.createReport = function(contribuyente, success, error){
+        contribuyente.year = new Date().getFullYear();
+        contribuyente.day = new Date().getDate();
+        contribuyente.month = new Date().getMonth()+1;// FIX the javascript
         $http({
             method: 'POST',
             url: '/api/contribuyentes/report',
+            data: contribuyente,
             responseType:'arraybuffer',
             headers: {
                 'Content-type': 'application/json'

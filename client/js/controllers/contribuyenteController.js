@@ -111,10 +111,13 @@ angular
     };
 
     this.onReport = function() {
-        ContribuyenteService.createReport(function(response) {
+        var tmpData = {};
+        tmpData.contribuyentes = _.filter(this.contribuyentes, function(item){
+            return item.selected === true;
+        });
+        ContribuyenteService.createReport(tmpData, function(response) {
             var file = new Blob([response.data], {type: 'application/pdf'});
             var fileURL = URL.createObjectURL(file);
-            console.log('C ...'+fileURL);
             window.open(fileURL, '_blank');
           }, function(e){
             console.log(e);
