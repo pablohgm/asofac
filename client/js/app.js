@@ -4,11 +4,15 @@ angular
     'ngStorage',
     'ngMaterial',
     'ngMessages',
-    'ngMdIcons'
+    'ngMdIcons',
+    'angular-loading-bar',
+    'ngAnimate'
   ])
 
-  .config(['$stateProvider', '$urlRouterProvider', '$mdThemingProvider',
-      function($stateProvider, $urlRouterProvider, $mdThemingProvider) {
+  .config(['$stateProvider', '$urlRouterProvider', '$mdThemingProvider', 'cfpLoadingBarProvider',
+      function($stateProvider, $urlRouterProvider, $mdThemingProvider, cfpLoadingBarProvider) {
+
+        cfpLoadingBarProvider.includeSpinner = false;
 
         $stateProvider
         .state('login', {
@@ -21,11 +25,6 @@ angular
             templateUrl: '../views/main.html',
             controller: 'AppController as app'
         })
-        //.state('viewPdf', {
-        //    url: '/viewPdf',
-        //    templateUrl: '../views/viewPdf.html',
-        //    controller: 'ViewPdfController'
-        //})
         .state('main.sector', {
             url: '/sector',
             templateUrl: '../views/sector.html',
