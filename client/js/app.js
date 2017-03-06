@@ -39,6 +39,11 @@ angular
             url: '/tipo',
             templateUrl: '../views/tipo.html',
             controller: 'TipoController as tipo'
+        })
+        .state('main.configuracion', {
+          url: '/configuracion',
+          templateUrl: '../views/configuracion.html',
+          controller: 'ConfiguracionController as configuracion'
         });
 
         $mdThemingProvider.theme('default')

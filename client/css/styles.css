@@ -38,7 +38,17 @@ md-input-container {
   color: rgb(158, 158, 158);
 }
 
-.toast-error-title{
-  color: rgba(255,82,82,0.87);
+.toast-error {
+   color: rgba(255,82,82,0.87);
+   font-weight: bold;
+}
+
+.toast-warning {
+  color: rgb(255,87,34);
+  font-weight: bold;
+}
+
+.toast-success {
+  color: rgb(76, 175, 80);
   font-weight: bold;
 }

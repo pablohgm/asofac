@@ -20,7 +20,7 @@ angular
         }
 
         function errorLogin (error) {
-            AlertService.errorLogin(error);
+            AlertService.simpleAlert({type: 'ERROR', message: error.statusText});
         }
 
         init();

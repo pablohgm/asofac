@@ -41,5 +41,9 @@
   "contribuyente": {
     "dataSource": "mysql",
     "public": true
+  },
+  "configuration": {
+    "dataSource": "mysql",
+    "public": true
   }
 }

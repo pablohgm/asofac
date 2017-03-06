@@ -1,8 +1,8 @@
 angular
   .module('app')
   .controller('ContribuyenteController', ['$scope', '$state', '$window', '$location',
-              '$mdSidenav', 'ContribuyenteService', 'SectorService', 'TipoService',
-	  function($scope, $state, $window, $location, $mdSidenav, ContribuyenteService, SectorService, TipoService) {
+              '$mdSidenav', 'ContribuyenteService', 'SectorService', 'TipoService', 'AlertService',
+	  function($scope, $state, $window, $location, $mdSidenav, ContribuyenteService, SectorService, TipoService, AlertService) {
 
     var self = this;
     this.selectAll = false;
@@ -115,6 +115,10 @@ angular
         tmpData.contribuyentes = _.filter(this.contribuyentes, function(item){
             return item.selected === true;
         });
+        if(!tmpData.contribuyentes.length){
+            AlertService.simpleAlert({type: 'WARNING', message: 'No hay contribuyentes seleccionados'});
+            return;
+        }
         ContribuyenteService.createReport(tmpData, function(response) {
             var file = new Blob([response.data], {type: 'text/html'});
             var fileURL = URL.createObjectURL(file);
@@ -122,10 +126,6 @@ angular
           }, function(e){
             console.log(e);
           });
-    };
-
-    this.toViewPdf = function() {
-        $window.open($scope.pdf.src + $scope.pdf.name);
     };
 
     this.getSector = function(argId){
