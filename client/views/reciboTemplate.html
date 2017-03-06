@@ -1,13 +1,17 @@
-{{for contribuyentes}}
-    <div style="page-break-after:always; position: relative">
-        <p style="position: absolute; left: 392px; top: 5px; margin: 0; font-size: 8px">{{:~root.year}}</p>
-        <p style="position: absolute; left: 357px; top: 5px; margin: 0; font-size: 8px">{{:~root.day}}</p>
-        <p style="position: absolute; left: 322px; top: 5px; margin: 0; font-size: 8px">{{:~root.month}}</p>
-        <p style="position: absolute; left: 510px; top: 6px; margin: 0; font-size: 8px">xxx</p>
-        <p style="position: absolute; left: 315px; top: 44px; margin: 0; font-size: 8px">{{:nombre}} {{:Apellido1}} {{:Apellido2}}</p>
-        <p style="position: absolute; left: 95px; top: 56px; margin: 0; font-size: 8px">{{:sector.informacion}}</p>
-        <p style="position: absolute; left: 95px; top: 67px; margin: 0; font-size: 8px">{{:direccion}}</p>
-        <p style="position: absolute; left: 95px; top: 82px; margin: 0; font-size: 8px">{{:monto}}</p>
-        <p style="width: 7cm; overflow: auto; position: absolute; left: 35px; top: 102px; margin: 0; font-size: 8px;">El dia martes se realizara recoleccion de desechos. Ademas se suspendera el servicio de agua</p>
+<div id="toPrint">
+    <div class="printeable">
+    {{#each contribuyentes}}
+        <div style="position: relative; width: 18.5cm; height: 7.2cm; margin: 0; page-break-after:always; color: #000000;">
+            <p style="position: absolute; left: 412px; top: 16px; margin: 0; font-size: 12px">{{../year}}</p>
+            <p style="position: absolute; left: 377px; top: 16px; margin: 0; font-size: 12px">{{../month}}</p>
+            <p style="position: absolute; left: 342px; top: 16px; margin: 0; font-size: 12px">{{../day}}</p>
+            <p style="position: absolute; left: 530px; top: 18px; margin: 0; font-size: 12px">001</p>
+            <p style="position: absolute; left: 335px; top: 58px; margin: 0; font-size: 12px">{{nombre}} {{Apellido1}} {{Apellido2}}</p>
+            <p style="position: absolute; left: 100px; top: 70px; margin: 0; font-size: 12px">{{sector.informacion}}</p>
+            <p style="position: absolute; left: 100px; top: 86px; margin: 0; font-size: 12px">{{direccion}}</p>
+            <p style="position: absolute; left: 100px; top: 100px; margin: 0; font-size: 12px">{{monto}}</p>
+            <p style="width: 7cm; overflow: auto; position: absolute; left: 55px; top: 116px; margin: 0; font-size: 11px;">El dia martes se realizara recoleccion de desechos. Ademas se suspendera el servicio de agua</p>
+        </div>
+    {{/each}}
     </div>
-{{/for}}
+</div>

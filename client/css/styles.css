@@ -37,3 +37,14 @@ md-input-container {
 .label-switch span {
   color: rgb(158, 158, 158);
 }
+
+@media print {
+
+  .printeable {
+    color: red;
+  }
+  
+  div {
+    color: green;
+  }
+}

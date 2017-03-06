@@ -116,7 +116,7 @@ angular
             return item.selected === true;
         });
         ContribuyenteService.createReport(tmpData, function(response) {
-            var file = new Blob([response.data], {type: 'application/pdf'});
+            var file = new Blob([response.data], {type: 'text/html'});
             var fileURL = URL.createObjectURL(file);
             window.open(fileURL, '_blank');
           }, function(e){
