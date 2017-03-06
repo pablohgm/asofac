@@ -1,7 +1,7 @@
 angular
 .module('app')
-.controller('LoginController', ['$scope', '$state', '$window', '$location','$sessionStorage', 'UserService',
-    function($scope, $state, $window, $location, $sessionStorage, UserService) {
+.controller('LoginController', ['$scope', '$state', '$window', '$location','$sessionStorage', 'UserService', 'AlertService',
+    function($scope, $state, $window, $location, $sessionStorage, UserService, AlertService) {
 
         this.user = {username: '', password: ''};
 
@@ -19,7 +19,8 @@ angular
             $location.url('/');
         }
 
-        function errorLogin () {
+        function errorLogin (error) {
+            AlertService.errorLogin(error);
         }
 
         init();

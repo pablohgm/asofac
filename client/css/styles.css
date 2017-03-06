@@ -38,13 +38,7 @@ md-input-container {
   color: rgb(158, 158, 158);
 }
 
-@media print {
-
-  .printeable {
-    color: red;
-  }
-  
-  div {
-    color: green;
-  }
+.toast-error-title{
+  color: rgba(255,82,82,0.87);
+  font-weight: bold;
 }
