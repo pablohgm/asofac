@@ -56,6 +56,7 @@ angular
             self.contribuyentes[tmpIndex] = result.data;
             self.contribuyente = {};
             self.onClose();
+            AlertService.simpleAlert({type: 'SUCCESS', message: 'El usuario se guardo correctamente'});
         }, function(error){
             console.log(error);
         });
@@ -67,6 +68,7 @@ angular
             self.contribuyentes.unshift(result.data);
             self.contribuyente = {};
             self.onClose();
+            AlertService.simpleAlert({type: 'SUCCESS', message: 'El usuario se guardo correctamente'});
         }, function(error){
             console.log(error);
         });
@@ -86,6 +88,7 @@ angular
             _.remove(self.contribuyentes, function(item){
                 return item.id == argId;
             });
+            AlertService.simpleAlert({type: 'SUCCESS', message: 'El usuario se elimino correctamente'});
         }, function(error){
             console.log(error);
         });

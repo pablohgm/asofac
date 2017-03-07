@@ -16,8 +16,7 @@
       "required": true
     },
     "Apellido2": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "direccion": {
       "type": "string",
