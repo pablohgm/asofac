@@ -14,8 +14,8 @@ module.exports = function(Contribuyente) {
             if(models){
                 var tmpConfig = models[0];
                 argData.mensaje = tmpConfig.mensaje;
-                tmpYear = tmpConfig.serie.substring(2,5);
-                tmpSerie = Number(tmpConfig.serie.substring(5,9));
+                tmpYear = tmpConfig.serie.substring(0,3);
+                tmpSerie = Number(tmpConfig.serie.substring(3,7));
                 argData.contribuyentes.forEach(function(item){
                     tmpSerie = tmpSerie + 1;
                     tmpSerieFormat = ("0000"+tmpSerie);
