@@ -126,9 +126,9 @@ angular
             var file = new Blob([response.data], {type: 'text/html'});
             var fileURL = URL.createObjectURL(file);
             window.open(fileURL, '_blank');
-          }, function(e){
+        }, function(e){
             console.log(e);
-          });
+        });
     };
 
     this.getSector = function(argId){
