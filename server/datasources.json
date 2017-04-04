@@ -4,10 +4,10 @@
     "connector": "memory"
   },
   "mysql": {
-    "host": "localhost",
+    "host": "facturacion.ccrqgjjkavrw.us-west-2.rds.amazonaws.com",
     "port": 3306,
     "database": "facturacion",
-    "password": "root",
+    "password": "root1234",
     "name": "mysql",
     "user": "root",
     "connector": "mysql",
