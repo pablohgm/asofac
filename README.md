@@ -1,10 +1,6 @@
-# electron-loopback-angularjs
+# ASOFAC
 
-This is just a glued scaffold for a cross platform desktop application using
-
-* Electron - https://github.com/atom/electron - to wrap the whole thing in a desktop app
-* Loopback - https://github.com/strongloop/loopback - for persistend models
-* AngularJS - https://github.com/angular/angular.js - for the MVC part
+System to manage and print report about "Palliative Care" contributions.
 
 # Installation
 
@@ -24,3 +20,6 @@ To start the app type `npm start` in project's root directory
 [PROJECT_ROOT]/common/models holds LoopBack models
 
 [PROJECT_ROOT]/client holds the AngularJs app
+
+
+Forked from https://github.com/a3bhea/electron-loopback-angularjs

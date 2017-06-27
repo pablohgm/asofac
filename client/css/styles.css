@@ -1,6 +1,55 @@
 body {
-  padding-top:50px
+  margin: 0;
 }
+
+.login {
+ margin-top: 10%;
+}
+
+.login-content {
+  margin: 14px;
+}
+
 .glyphicon-remove:hover {
   cursor:pointer
+}
+
+.grid {
+  width: 500px;
+  height: 400px;
+}
+
+md-toolbar:not(.md-menu-toolbar) {
+  background-color: rgb(25, 138, 210);
+}
+
+.mdt-header {
+  background-color: rgb(25, 138, 210);
+}
+
+.mdt-header span {
+  color: #ffffff;
+}
+
+md-input-container {
+  margin: 0;
+}
+
+.label-switch span {
+  color: rgb(158, 158, 158);
+}
+
+.toast-error {
+   color: rgba(255,82,82,0.87);
+   font-weight: bold;
+}
+
+.toast-warning {
+  color: rgb(255,87,34);
+  font-weight: bold;
+}
+
+.toast-success {
+  color: rgb(76, 175, 80);
+  font-weight: bold;
 }

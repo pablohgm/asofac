@@ -1,0 +1,51 @@
+<div ng-controller="ConfiguracionController as ConfiguracionCtrl">
+    <md-content flex="" layout-padding="">
+        <div layout="column" layout-align="top left">
+            <div>
+                <md-button ng-click="ConfiguracionCtrl.onEdit()" class="md-primary">
+                    Editar
+                </md-button>
+            </div>
+        </div>
+    </md-content>
+    <md-sidenav class="md-sidenav-left md-whiteframe-4dp" md-component-id="right">
+        <md-toolbar class="md-theme-left">
+            <h1 class="md-toolbar-tools">Formulario de Configuración</h1>
+        </md-toolbar>
+        <md-content layout-padding="">
+            <form class="form-config" name="configForm" novalidate ng-submit="ConfiguracionCtrl.onSave()">
+                <md-input-container>
+                    <label for="mensaje">Mensaje</label>
+                    <input type="textArea" id="mensaje" name="mensaje" ng-model="ConfiguracionCtrl.tmpConfig.mensaje" md-autofocus="">
+                </md-input-container>
+                <md-input-container>
+                    <label for="serie">Serie</label>
+                    <input type="text" id="serie" name="serie" ng-model="ConfiguracionCtrl.tmpConfig.serie" placeholder="##-####" required md-autofocus="">
+                    <div ng-messages="sectorForm.serie.$error">
+                        <ng-message when="required">Este campo es requerido!</ng-message>
+                    </div>
+                </md-input-container>
+                <br>
+                <md-button type="submit" ng-disabled="sectorForm.$invalid" md-no-ink class="md-primary">
+                    Guardar
+                </md-button>
+                <md-button ng-click="ConfiguracionCtrl.onClose()" class="md-primary">
+                    Cerrar
+                </md-button>
+            </form>
+
+        </md-content>
+    </md-sidenav>
+    <div class="table">
+        <table>
+            <tr>
+                <th class="first">Aviso</th>
+                <th class="first">Serie</th>
+            </tr>
+            <tr>
+                <td>{{ConfiguracionCtrl.config.mensaje}}</td>
+                <td>{{ConfiguracionCtrl.config.serie}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

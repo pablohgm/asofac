@@ -1,0 +1,281 @@
+.table {
+  /*overflow: visible;*/
+  font-size: 15px;
+  /* 12sp Roboto Medium, 54% black */
+  /* optional animation of sort icons: add class 'animate-sort-icon' to mdt-header-row to activate animation */
+  /* 64dp card header height */
+  /* 56do for last row */
+  /* column padding */
+  /* 48dp row height */
+  /* 13sp Roboto Regular, 87% black */
+  /* border separation color */
+  /* INTERACTION */
+  /* default icon color */
+  /* filter drop down */
+  /* TH Select outline color & caret */
+}
+.table .md-chips {
+  font-size: 14px;
+}
+.table .p-r {
+  position: relative;
+}
+.table .no-outline {
+  outline: none;
+}
+.table *,
+.table *:before,
+.table *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+.table table {
+  width: 100%;
+  display: table;
+  border-collapse: collapse;
+}
+.table table:focus {
+  outline: none;
+}
+.table td, .table th {
+  padding: 0;
+  margin: 0;
+}
+.table th {
+  font-size: 12px;
+  font-weight: 500;
+  color: #757575;
+  white-space: nowrap;
+  /* prevent ink ripple bleeding */
+  position: relative;
+  text-align: left;
+  /* no pointer cursor when disabled, could be not-allowed but i think that indication is to strong */
+  /* remove the default blue outline in Chrome for consistent button-like behaviour */
+  /* when hoverSortIcons on a non-sorted column*/
+}
+.table .first{
+  padding-left: 22px;
+}
+.table th.clickable {
+  cursor: pointer;
+}
+.table th[disabled] {
+  cursor: auto;
+}
+.table th:focus {
+  outline: none;
+}
+.table th .hoverSortIcons ng-md-icon {
+  visibility: hidden;
+  width: 16px;
+  height: 16px;
+  fill: #b3b3b3;
+}
+.table th .hoverSortIcons ng-md-icon svg {
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.table th:hover .hoverSortIcons ng-md-icon {
+  visibility: visible;
+}
+.table th .sortedColumn {
+  /* when hoverSortIcons on a sorted column*/
+  /* sort icon rotated -90 degrees for descending sort */
+}
+.table th .sortedColumn .hoverSortIcons ng-md-icon {
+  display: none;
+}
+.table th .sortedColumn ng-md-icon {
+  /* specified 16px is a fix now cause angular materia generates a 24x24 icon even the passed value is 16  */
+  width: 16px;
+  height: 16px;
+  fill: #212121;
+  /* sort icon rotated 90 degrees for ascending sort (default) */
+}
+.table th .sortedColumn ng-md-icon svg {
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.table th .sortedColumn.descending ng-md-icon > svg {
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+.table tr.animate-sort-icon .sortedColumn ng-md-icon svg {
+  -webkit-transition: 0.3s linear all;
+  transition: 0.3s linear all;
+}
+.table .mdt-header, .table .mdt-header-alternate {
+  height: 64px;
+  padding-left: 24px;
+  padding-right: 14px;
+}
+.table .mdt-header md-button, .table .mdt-header-alternate md-button {
+  margin-left: 24px;
+}
+.table .mdt-header ng-md-icon, .table .mdt-header-alternate ng-md-icon {
+  fill: #757575;
+}
+.table .mdt-header-alternate {
+  background-color: #e3edfd;
+}
+.table .mdt-header-alternate .alternate-text {
+  color: #0D47A1;
+}
+.table .mdt-footer, .table tr th {
+  height: 56px;
+  line-height: 56px;
+}
+.table .mdt-footer .mdt-pagination, .table tr th .mdt-pagination {
+  font-size: 12px;
+  color: #757575;
+}
+.table .mdt-footer .mdt-pagination md-input-container, .table tr th .mdt-pagination md-input-container {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.table .checkboxCell {
+  width: 18px;
+  /*the next cell should not have just 24px padding */
+}
+.table .checkboxCell md-checkbox {
+  margin: 0;
+  padding: 0;
+}
+.table .checkboxCell + td, .table .checkboxCell + th {
+  padding-left: 24px;
+}
+.table .checkboxCell + td, .table .checkboxCell + th .edit{
+  padding-right: 22px;
+  cursor: pointer;
+}
+.table tr td {
+  padding: 0;
+  height: 48px;
+  font-size: 13px;
+  color: #212121;
+}
+.table td:first-child, .table th:first-child {
+  padding: 0 0 0 24px;
+}
+.table td:last-child, .table th:last-child {
+  padding-right: 24px;
+}
+.table .column {
+  padding-left: 56px;
+}
+.table .leftAlignedColumn {
+  text-align: left;
+}
+.table .rightAlignedColumn {
+  text-align: right;
+}
+.table tr th {
+  border-bottom: solid 1px #DDDDDD;
+}
+.table tr td {
+  border-bottom: solid 1px #DDDDDD;
+}
+.table tr:hover td {
+  background: #EEEEEE;
+}
+.table .selectedRow td {
+  background: #F5F5F5;
+}
+.table ng-md-icon {
+  fill: #757575;
+}
+.table .md-inactive ng-md-icon {
+  fill: rgba(0, 0, 0, 0.26);
+}
+.table .md-virtual-repeat-container {
+  min-height: 106px;
+}
+.table .b-b {
+  border-bottom: 1px solid #dedede;
+}
+.table .p-md {
+  padding: 16px;
+}
+.table .p-l-md {
+  padding-left: 16px;
+}
+.table .p-r-md {
+  padding-right: 16px;
+}
+.table .p-sm {
+  padding: 8px;
+}
+.table .p-t-sm {
+  padding-top: 8px;
+}
+.table .p-b-sm {
+  padding-bottom: 8px;
+}
+.table .p-b-n {
+  padding-bottom: 0;
+}
+.table .filter-dropdown {
+  position: absolute;
+  left: -10px;
+  z-index: 1;
+  top: 110%;
+  width: 220px;
+  text-align: initial;
+}
+.table .header-dropdown-btn {
+  position: relative;
+}
+.table .header-dropdown-btn .filter-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: auto;
+}
+.table .filter__search {
+  position: relative;
+}
+.table .filter__search ng-md-icon[icon="search"] {
+  position: absolute;
+  top: 22px;
+  left: 24px;
+}
+.table .filter__search .md-icon-button {
+  position: absolute;
+  right: 10px;
+  top: 14px;
+}
+.table .filter__search .input {
+  padding: 8px 32px 8px 36px;
+  width: 100%;
+}
+.table .filter__scroll {
+  max-height: 200px;
+  overflow-y: auto;
+}
+.table .filter-select {
+  border: 1px solid transparent;
+  padding: 11px 10px;
+  border-radius: 2px;
+  cursor: pointer;
+  margin-left: -10px;
+}
+.table .filter-select:hover {
+  border-color: #dedede;
+}
+.table .filter-select:hover ng-md-icon {
+  visibility: visible;
+}
+.table .filter-select.is-active {
+  color: #fff;
+  background-color: #0096D6;
+  border-color: #0096D6;
+}
+.table .filter-select ng-md-icon {
+  visibility: hidden;
+}
+.table .filter-select.is-active ng-md-icon {
+  visibility: visible;
+  fill: rgba(255, 255, 255, 0.87);
+  fill: #fff;
+}
