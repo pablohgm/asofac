@@ -1,8 +1,6 @@
 {
   "initial:before": {
-    "loopback#favicon": {
-      "params": "$!../client/images/favicon.ico"
-    }
+    "loopback#favicon": {}
   },
   "initial": {
     "compression": {},
@@ -14,15 +12,13 @@
       }
     }
   },
-  "session": {},
-  "auth": {},
-  "parse": {},
+  "session": {
+  },
+  "auth": {
+  },
+  "parse": {
+  },
   "routes": {
-    "loopback#rest": {
-      "paths": [
-        "${restApiRoot}"
-      ]
-    }
   },
   "files": {
     "loopback#static": {
@@ -31,8 +27,5 @@
   },
   "final": {
     "loopback#urlNotFound": {}
-  },
-  "final:after": {
-    "errorhandler": {}
   }
 }

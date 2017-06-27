@@ -1,0 +1,22 @@
+{
+  "name": "loopback-example-angular",
+  "license": "MIT",
+  "version": "0.0.0",
+  "homepage": "https://github.com/strongloop/loopback-example-angular",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-router": "~0.2.13",
+    "lodash": "^4.15.0",
+    "ngstorage": "^0.3.11",
+    "angular-material": "^1.1.0",
+    "angular-loading-bar": "^0.9.0",
+    "angular-material-icons": "^0.7.1"
+  }
+}

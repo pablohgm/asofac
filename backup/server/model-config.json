@@ -1,0 +1,49 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ]
+  },
+  "User": {
+    "dataSource": "mysql"
+  },
+  "AccessToken": {
+    "dataSource": "mysql",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "mysql",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "mysql",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "mysql",
+    "public": false
+  },
+  "codigo": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "tipo": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "sector": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "contribuyente": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "configuration": {
+    "dataSource": "mysql",
+    "public": true
+  }
+}

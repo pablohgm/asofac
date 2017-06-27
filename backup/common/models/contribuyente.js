@@ -1,6 +1,6 @@
 module.exports = function(Contribuyente) {
 
-    var app = require('../../server/server');
+    var app = require('.././server');
     var Handlebars = require('handlebars');
     var fs = require('fs');
 

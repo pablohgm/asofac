@@ -1,0 +1,17 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "mysql": {
+    "host": "facturacion.ccrqgjjkavrw.us-west-2.rds.amazonaws.com",
+    "port": 3306,
+    "database": "facturacion",
+    "password": "root1234",
+    "name": "mysql",
+    "user": "root",
+    "connector": "mysql",
+    "connectTimeout": 20000,
+    "acquireTimeout": 20000
+  }
+}

@@ -8,42 +8,26 @@
     ]
   },
   "User": {
-    "dataSource": "mysql"
+    "dataSource": "db"
   },
   "AccessToken": {
-    "dataSource": "mysql",
+    "dataSource": "db",
     "public": false
   },
   "ACL": {
-    "dataSource": "mysql",
+    "dataSource": "db",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "mysql",
+    "dataSource": "db",
     "public": false
   },
   "Role": {
-    "dataSource": "mysql",
+    "dataSource": "db",
     "public": false
   },
-  "codigo": {
-    "dataSource": "mysql",
-    "public": true
-  },
-  "tipo": {
-    "dataSource": "mysql",
-    "public": true
-  },
-  "sector": {
-    "dataSource": "mysql",
-    "public": true
-  },
-  "contribuyente": {
-    "dataSource": "mysql",
-    "public": true
-  },
-  "configuration": {
-    "dataSource": "mysql",
+  "Todo": {
+    "dataSource": "db",
     "public": true
   }
 }
