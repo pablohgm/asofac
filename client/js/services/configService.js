@@ -12,8 +12,6 @@ angular
     };
 
     service.edit = function(config, success, error){
-        var tmpYear = new Date().getFullYear().toString().substring(2,4);
-        config.serie = tmpYear +'-'+ config.serie.slice(-4);
         $http.put('/api/configurations/'+config.id, config).then(success, error);
     };
 
