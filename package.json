@@ -35,11 +35,13 @@
     "electron-debug": "^0.2.1",
     "express": "^4.13.3",
     "express-ejs-layouts": "^1.1.0",
+    "jsreport": "^1.2.1",
     "loopback": "^2.22.0",
     "loopback-boot": "^2.6.5",
     "loopback-component-explorer": "^2.1.0",
     "loopback-connector-mysql": "^4.2.0",
     "loopback-datasource-juggler": "^2.39.0",
+    "phantomjs-exact-2-1-1": "^0.1.0",
     "serve-favicon": "^2.0.1"
   },
   "devDependencies": {
