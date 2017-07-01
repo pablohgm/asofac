@@ -123,9 +123,7 @@ angular
             return;
         }
         ContribuyenteService.createReport(tmpData, function(response) {
-						var file = new Blob([response.data], {type: 'application/pdf'});
-            var fileURL = URL.createObjectURL(file);
-            window.open(fileURL, '_blank');
+					AlertService.simpleAlert({type: 'SUCCESS', message: response.data.msg});
         }, function(e){
             console.log(e);
         });

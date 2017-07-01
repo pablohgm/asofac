@@ -25,7 +25,7 @@ module.exports = function(Contribuyente) {
 							data: formatDataTemplate(argData)
 						}).then(function(out) {
 							out.stream.pipe(fs.createWriteStream('./report.pdf'));
-							cb(null, out.stream, 'application/octet-stream');
+							cb(null, 'La aplicacion ha creado el reporte, abriendo ...');
 						}).catch(function(e) {
 							cb(e.message);
 						});
@@ -35,7 +35,6 @@ module.exports = function(Contribuyente) {
 		function formatDataTemplate (argData) {
 				var tmpTriplets = {},
 						tmpCont = 0;
-
 				tmpTriplets.pages = [];
 
 				for(var i = 0; i < argData.contribuyentes.length; i++){
@@ -63,14 +62,10 @@ module.exports = function(Contribuyente) {
 				return tmpTriplets;
 		};
 
-		function createPage (arg) {
-
-		};
-
 		Contribuyente.remoteMethod('report', {
 			accepts: { arg: 'argData', type: 'object', http: { source: 'body' } },
 			returns: [
-				{ arg: 'body', type: 'file', root: true },
+				{ arg: 'msg', type: 'string'},
 				{ arg: 'Content-Type', type: 'string', http: { target: 'header' } },
 			]
 		});

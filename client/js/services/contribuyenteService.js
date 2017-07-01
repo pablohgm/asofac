@@ -21,15 +21,7 @@ angular
         contribuyente.year = new Date().getFullYear();
         contribuyente.day = new Date().getDate();
         contribuyente.month = new Date().getMonth()+1;// FIX the javascript
-        $http({
-            method: 'POST',
-            url: '/api/contribuyentes/report',
-            data: contribuyente,
-            responseType:'arraybuffer',
-            headers: {
-                'Content-type': 'application/json'
-            }
-        }).then(success, error);
+				$http.post('/api/contribuyentes/report', contribuyente).then(success, error);
     };
 
     service.delete = function(id, success, error){
