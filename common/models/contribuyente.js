@@ -18,8 +18,8 @@ module.exports = function(Contribuyente) {
 								engine: 'jsrender',
 								recipe: 'phantom-pdf',
 								phantom: {
-									format: 'A4',
-									phantomjsVersion: "2.1.1"
+									phantomjsVersion: "2.1.1",
+									margin: { top: 0, right: 0, bottom: 0, left: 0 }
 								}
 							},
 							data: formatDataTemplate(argData)
