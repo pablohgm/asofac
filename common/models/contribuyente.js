@@ -1,5 +1,6 @@
 module.exports = function(Contribuyente) {
 	var jsreport = require('jsreport');
+	var Handlebars = require('handlebars');
 	var fs = require('fs');
 	var app = require('../../server/server');
 	var exec = require('child_process');
@@ -12,22 +13,26 @@ module.exports = function(Contribuyente) {
 					var tmpConfig = models[0];
 					argData.mensaje = tmpConfig.mensaje;
 			}
+			var file = fs.readFileSync('./client/views/reciboTemplate.html',  'utf8');
+			var template = Handlebars.compile(file);
+			var html = template(formatDataTemplate(argData));
+			fs.writeFile('./report.html', html);
 			jsreport.render({
 				template: {
-					content: fs.readFileSync('./client/views/reciboTemplate.html',  'utf8'),
+					content: html,
 					engine: 'jsrender',
 					recipe: 'phantom-pdf',
 					phantom: {
-						format: 'A4',
+						format: 'Letter',
 						margin: { top: 0, right: 0, bottom: 0, left: 0 }
 					}
-				},
-				data: formatDataTemplate(argData)
+				}
 			}).then(function(out) {
 				out.stream.pipe(fs.createWriteStream('./report.pdf'))
 					.on('finish', openReport);
 				cb(null, 'La aplicacion ha creado el reporte, abriendo ...');
 			}).catch(function(e) {
+				console.log(e);
 				cb(e.message);
 			});
 		});
@@ -35,7 +40,9 @@ module.exports = function(Contribuyente) {
 
 	function openReport() {
 		console.log('open report ...');
-		exec.exec('start "" /max "./report.pdf"', puts);
+		setTimeout(function (){
+			exec.exec('start "" /max "./report.pdf"', puts);
+		}, 3000);
 	};
 
 	function puts(error, stdout, stderr) {
@@ -57,16 +64,19 @@ module.exports = function(Contribuyente) {
 			while (tmpCont < 3 && argData.contribuyentes.length){
 				var tmpContribuyente = argData.contribuyentes.pop();
 				tmpTriplets.pages[i].contribuyentes.push({
-						year: argData.year,
-						month: argData.month,
-						day: argData.day,
-						name: tmpContribuyente.nombre,
-						lastname: tmpContribuyente.Apellido1,
-						lastname2: tmpContribuyente.Apellido2,
-						sector: (tmpContribuyente.Sector === undefined) ? '' : tmpContribuyente.Sector.informacion,
-						address: tmpContribuyente.direccion,
-						value: tmpContribuyente.monto,
-						message: argData.mensaje
+					year: argData.year,
+					month: argData.month,
+					day: argData.day,
+					name: tmpContribuyente.nombre,
+					lastname: tmpContribuyente.Apellido1,
+					lastname2: tmpContribuyente.Apellido2,
+					sector: (tmpContribuyente.Sector === undefined) ? '' : tmpContribuyente.Sector.informacion,
+					address: tmpContribuyente.direccion,
+					value: tmpContribuyente.monto,
+					message: argData.mensaje,
+					first: (tmpCont === 0) ? true : false,
+					middle: (tmpCont === 1) ? true : false,
+					last: (tmpCont === 2) ? true : false
 				});
 				tmpCont++;
 			}
