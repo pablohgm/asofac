@@ -56,7 +56,7 @@ module.exports = function(Contribuyente) {
 				tmpCont = 0;
 		tmpTriplets.pages = [];
 
-		for(var i = 0; i < argData.contribuyentes.length; i++){
+		for(var i = 0; i <= argData.contribuyentes.length; i++){
 			tmpTriplets.pages.push({
 					contribuyentes: []
 			});
@@ -70,7 +70,7 @@ module.exports = function(Contribuyente) {
 					name: tmpContribuyente.nombre,
 					lastname: tmpContribuyente.Apellido1,
 					lastname2: tmpContribuyente.Apellido2,
-					sector: (tmpContribuyente.Sector === undefined) ? '' : tmpContribuyente.Sector.informacion,
+					sector: (tmpContribuyente.sector === undefined) ? '' : tmpContribuyente.sector.informacion,
 					address: tmpContribuyente.direccion,
 					value: tmpContribuyente.monto,
 					message: argData.mensaje,
@@ -79,8 +79,10 @@ module.exports = function(Contribuyente) {
 					last: (tmpCont === 2) ? true : false
 				});
 				tmpCont++;
+				console.log(tmpCont);
 			}
 		}
+		console.log(tmpTriplets);
 		return tmpTriplets;
 	};
 
